@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tetris</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="css/style.min.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<body onload="initTetris('canvasTetris', 'rgba(121,121,121,0.7)', 'rgba(192,0,15,0.6)')">
+    <div class="container">
+        <div id="canvasTetris"></div>
+        <div class="description">
+            &#8592; &#8593; &#8594; &#8595; to move, P to pause
+            <br/> Speed increases every 1000 earned score points
+            <br/> Click to play
+        </div>
+    </div>
+</body>
+
+<script src="js/script.js"></script>
+
+</html>
