@@ -6,7 +6,7 @@ whenever sqlerror exit sql.sqlcode rollback
 -- ORACLE Application Express (APEX) export file
 --
 -- You should run the script connected to SQL*Plus as the Oracle user
--- APEX_180200 or as the owner (parsing schema) of the application.
+-- APEX_190100 or as the owner (parsing schema) of the application.
 --
 -- NOTE: Calls to apex_application_install override the defaults below.
 --
@@ -36,12 +36,10 @@ wwv_flow_api.create_plugin(
 '    P_IS_PRINTER_FRIENDLY   IN BOOLEAN',
 ') RETURN APEX_PLUGIN.T_REGION_RENDER_RESULT IS',
 'BEGIN',
-'    --APEX_CSS.ADD_FILE( P_NAME => ''style.min'', P_DIRECTORY => P_PLUGIN.FILE_PREFIX, P_VERSION => NULL, P_KEY => ''tetris-style'' );',
-'    APEX_JAVASCRIPT.ADD_LIBRARY( P_NAME => ''script.min'', P_DIRECTORY => P_PLUGIN.FILE_PREFIX, P_VERSION => NULL, P_KEY => ''tetris-script''',
-');',
+'    APEX_JAVASCRIPT.ADD_LIBRARY( P_NAME => ''script.min'', P_DIRECTORY => P_PLUGIN.FILE_PREFIX, P_VERSION => NULL, P_KEY => ''tetris-script'');',
 '',
 '    SYS.HTP.P( ''<div style="text-align:center;">',
-'                    <div id="''||P_REGION.STATIC_ID||''_tetris"></div>',
+'                    <div id="''|| APEX_ESCAPE.HTML_ATTRIBUTE( P_REGION.STATIC_ID ) ||''_tetris"></div>',
 '                    <div style="margin-top:20px;margin-bottom:20px;">',
 '                      <button style="width:20%" class="t-Button t-Button--noLabel t-Button--icon t-Button--large tetris-left" ',
 '                       onclick="void(0);" type="button"><span class="t-Icon fa fa-arrow-circle-left" aria-hidden="true"></span></button>',
@@ -73,7 +71,7 @@ wwv_flow_api.create_plugin(
 ,p_render_function=>'F_RENDER'
 ,p_substitute_attributes=>true
 ,p_subscribe_plugin_settings=>true
-,p_version_identifier=>'1.0'
+,p_version_identifier=>'1.1'
 ,p_about_url=>'https://github.com/RonnyWeiss/Apex-Tetris'
 ,p_files_version=>1253
 );
